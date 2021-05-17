@@ -22,6 +22,14 @@ def play(song_name, profile, config):
 
 
     # Play song
+    print(song_name)
+    pygame.mixer.music.load(song_name)
+    pygame.mixer.music.play()
 
 def pause():
     print("Now pausing...")
+    pygame.mixer.music.pause()
+
+def unpause():
+    print("Now unpausing...")
+    pygame.mixer.music.unpause()

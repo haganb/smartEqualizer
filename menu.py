@@ -3,6 +3,7 @@ from tkinter import filedialog
 from config import config
 import firm
 import pygame
+import os
 
 # SMART EQUALIZER 
 # University of Delaware Fall-Spring 2021
@@ -11,8 +12,13 @@ import pygame
 
 class menu:
     def __init__(self, config):
+        pygame.mixer.init()
+        self.pause_toggle = True
         self.config = config
         self.window = tk.Tk()
+
+        self.pauseText = tk.StringVar()
+        self.pauseText.set("Pause")
 
         self.songName = tk.StringVar()
         self.songName.set("None")
@@ -83,8 +89,8 @@ class menu:
         play.pack(side=tk.LEFT)
 
         pause = tk.Button(
-            text=("Pause"),
-            command=firm.pause,
+            textvar=self.pauseText,
+            command=self.pause,
             width=10,
             height=5,
             master=control_frame
@@ -162,3 +168,12 @@ class menu:
 
     def play_audio(self):
         firm.play(self.pathToSong, self.currentProfile.get(), self.config)
+
+    def pause(self):
+        if self.pause_toggle:
+            firm.pause()
+            self.pauseText.set("Unpause")
+        else:
+            firm.unpause()
+            self.pauseText.set("Pause")
+        self.pause_toggle = not self.pause_toggle # flip boolean
