@@ -14,7 +14,7 @@ def play(song_name, profile, config):
     if(profile == "Predictive"):
         profile = predict(song_name)
     # Get profile according to prediction
-    print("Loading configuration for {}".format(profile))
+    print("Loading configuration for {}...".format(profile))
     config.config.read('config.ini')
     
 

@@ -1,5 +1,3 @@
-import argparse
-import tkinter as tk
 from config import config
 from menu import menu
 

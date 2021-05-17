@@ -12,13 +12,16 @@ import os
 
 class menu:
     def __init__(self, config):
-        pygame.mixer.init()
+        # Menu setup
+        pygame.mixer.init() # initialize media player
         self.pause_toggle = True
         self.config = config
         self.window = tk.Tk()
 
         self.pauseText = tk.StringVar()
         self.pauseText.set("Pause")
+        self.playText = tk.StringVar()
+        self.playText.set("Play")
 
         self.songName = tk.StringVar()
         self.songName.set("None")
@@ -150,11 +153,6 @@ class menu:
         control_frame.pack(side=tk.TOP)
         button_frame.pack(side=tk.BOTTOM)
 
-
-
-    #def build_profile_edit(self, config):
-
-
     def choose_audio_file(self):
         name = filedialog.askopenfilename(
             initialdir="/",
@@ -167,8 +165,10 @@ class menu:
 
     def play_audio(self):
         self.pauseText.set("Pause")
+        self.playText.set("Playing...")
         self.pause_toggle = True
         firm.play(self.pathToSong, self.currentProfile.get(), self.config)
+        self.playText.set("Play")
 
     def pause(self):
         if self.pause_toggle:
