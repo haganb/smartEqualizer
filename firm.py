@@ -2,18 +2,19 @@ from Arduino import Arduino
 from configparser import ConfigParser
 import pygame
 import os
+from predict import predict
 
 def establish_connection():
     board = Arduino()
 
 
 def play(song_name, profile, config):
-
+    print("Now playing {}".format(song_name))
     # Get predictive tag for song
     if(profile == "Predictive"):
-        print("need to predict")
-
+        profile = predict(song_name)
     # Get profile according to prediction
+    print("Loading configuration for {}".format(profile))
     config.config.read('config.ini')
     
 
@@ -22,7 +23,6 @@ def play(song_name, profile, config):
 
 
     # Play song
-    print(song_name)
     pygame.mixer.music.load(song_name)
     pygame.mixer.music.play()
 

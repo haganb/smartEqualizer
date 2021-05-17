@@ -101,14 +101,13 @@ class menu:
         select_song = tk.Button(
             text="Select song to play",
             font=("Times"),
-            width=25,
-            height=5,
+            width=20,
+            height=4,
             master=button_frame,
             command = self.choose_audio_file   
         )
         select_song.pack(side=tk.LEFT)
 
-        
         profiles=[
             "Predictive",
             "Pop",
@@ -129,14 +128,14 @@ class menu:
         profile_select.config(width=25, height=5)
         profile_select.pack(side=tk.LEFT)
 
-        edit_profile = tk.Button(
-            text="Modify profile EQ values",
-            font=("Times"),
-            width=25,
-            height=5,
-            master=button_frame
-        )
-        edit_profile.pack(side=tk.RIGHT)
+        #edit_profile = tk.Button(
+        #    text="Modify profile EQ values",
+        #    font=("Times"),
+        #    width=25,
+        #    height=5,
+        #    master=button_frame
+        #)
+        #edit_profile.pack(side=tk.RIGHT)
 
         exit_button = tk.Button(
             text="Exit",
@@ -167,6 +166,8 @@ class menu:
         self.songName.set(name)
 
     def play_audio(self):
+        self.pauseText.set("Pause")
+        self.pause_toggle = True
         firm.play(self.pathToSong, self.currentProfile.get(), self.config)
 
     def pause(self):
