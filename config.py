@@ -28,3 +28,6 @@ class config:
         self.config[genre]["low"] = vals[2]
         with open('config.ini', 'w') as conf:
             self.config.write(conf)
+
+    def get_profile(self, genre):
+        return self.profiles[genre]

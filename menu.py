@@ -116,12 +116,15 @@ class menu:
             "Pop",
             "Hip Hop",
             "Rock",
-            "Techno",
+            "Classical",
             "Blues",
-            "Vocal",
+            "Country",
             "Reggae",
-            "Custom #1",
-            "Custom #2"
+            "Metal",
+            "Jazz",
+            "Disco"
+            "Custom 1",
+            "Custom 2"
         ]
         profile_select = tk.OptionMenu(
             button_frame,
