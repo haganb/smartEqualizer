@@ -11,15 +11,20 @@ def establish_connection():
 def play(song_name, profile, config):
     print("Now playing {}".format(song_name))
     # Get predictive tag for song
+    
     if(profile == "Predictive"):
         profile = predict(song_name)
+
     # Get profile according to prediction
     print("Loading configuration for {}...".format(profile))
     config.config.read('config.ini')
-    
+    high = config[profile]["high"]
+    med = config[profile]["med"]
+    low = config[profile]["low"]
+    print("value thruple: {}", (high, med, low))
 
     # Update arduino values
-
+    
 
 
     # Play song

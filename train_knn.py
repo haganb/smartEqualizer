@@ -11,6 +11,7 @@ import pickle
 import random
 import operator
 
+
 # distance: calculate "distance" between neighbors
 def distance(instance1, instance2, k):
     distance =0 
@@ -75,7 +76,7 @@ if __name__=="__main__":
     f.close()
     dataset = []
     def loadDataset(filename , split , trSet , teSet):
-        with open("my.dat" , 'rb') as f:
+        with open(filename, 'rb') as f:
             while True:
                 try:
                     dataset.append(pickle.load(f))
@@ -92,7 +93,16 @@ if __name__=="__main__":
     loadDataset("train.dat" , 0.66, trainingSet, testSet) # 2/3rds train, 1/3rd validate
     leng = len(testSet)
     predictions = []
-    for x in range (leng):
+
+    accs = []
+    
+
+    for x in range (len(testSet)):
         predictions.append(nearestClass(getNeighbors(trainingSet ,testSet[x] , 5))) 
+        #preds.append(nearestClass(getNeighbors(trainingSet ,testSet[x] , k))) 
     accuracy1 = getAccuracy(testSet , predictions)
-    print("KNN accuracy on dataset:", accuracy1)
+    #acc = getAccuracy(testSet, preds)
+    #accs.append(round(acc, 3))
+    #print(round(acc, 3), k)
+    print(accuracy1)
+    
