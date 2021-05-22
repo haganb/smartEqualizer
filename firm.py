@@ -45,8 +45,8 @@ def play(song_name, profile, config):
     profile_val = config.get_profile(profile)
 
     # Update arduino values
-    profile_val = flatten_payload(profile_val)
-    payload = "".join(char + " " for char in profile_val)
+    profile_val = flatten_payload(profile_val) 
+    payload = "< " + "".join(char + " " for char in profile_val) + ">"
     print(payload)
     write_read(payload)
 
