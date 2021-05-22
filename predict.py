@@ -31,7 +31,7 @@ def predict(song_name):
         results[i] = folder
         i += 1
     (rate,sig) = wav.read(song_name)
-    mfcc_feat = mfcc(sig,rate, winlen=0.020, appendEnergy=False)
+    mfcc_feat = mfcc(sig,rate, winlen=0.020, appendEnergy=False, nfft=1024)
     covariance = np.cov(np.matrix.transpose(mfcc_feat))
     mean_matrix = mfcc_feat.mean(0)
     feature = (mean_matrix, covariance, 0)
