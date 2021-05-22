@@ -3,9 +3,10 @@ from configparser import ConfigParser
 import pygame
 import os
 from predict import predict
+from comms import write_read
+import serial
 
-def establish_connection():
-    board = Arduino()
+arduino = serial.Serial(port='COM1', baudrate=115200, timeout=.1)
 
 
 def play(song_name, profile, config):
